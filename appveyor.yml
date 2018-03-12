@@ -1,0 +1,16 @@
+version: '{build}'
+image: Visual Studio 2017
+
+init:
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+
+build_script:
+  - cmd
+  - '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x64_x86' #use cross build x86 to speed up
+  - cmake -G "Visual Studio 15 2017"
+
+
+test: off
+artifacts:
+  - path: VCdeps.7z
+
