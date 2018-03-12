@@ -4,7 +4,7 @@ set(CMAKE_CONFIGURATION_TYPES Debug Release)
 
 project(ITHVNR)
 
-set(WDK_HOME "C:\\WinDDK\\7600.16385.1" CACHE FILEPATH "Windows Driver Kit path")
+#set(WDK_HOME "C:\\WinDDK\\7600.16385.1" CACHE FILEPATH "Windows Driver Kit path")
 set(CMAKE_INSTALL_PREFIX "" CACHE FILEPATH "installation path")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG "${CMAKE_BINARY_DIR}/Debug")
@@ -85,13 +85,13 @@ add_executable(${PROJECT_NAME} ${ithvnr_src})
 add_subdirectory(vnr)
 # add_subdirectory(profile)
 
-set_target_properties(${PROJECT_NAME} PROPERTIES
-  LINK_FLAGS "/SUBSYSTEM:WINDOWS /MANIFESTDEPENDENCY:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\""
-)
+#set_target_properties(${PROJECT_NAME} PROPERTIES
+#  LINK_FLAGS "/SUBSYSTEM:WINDOWS /MANIFESTDEPENDENCY:\"type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' processorArchitecture='*' publicKeyToken='6595b64144ccf1df' language='*'\""
+#)
 
 target_compile_definitions(${PROJECT_NAME}
   PRIVATE
-  PSAPI_VERSION=1
+#  PSAPI_VERSION=1
   DEFAULT_MM
 )
 
@@ -99,7 +99,7 @@ target_link_libraries(${PROJECT_NAME}
   profile
   vnrhost
   ithsys
-  ${WDK_HOME}/lib/wxp/i386/ntdll.lib
+  ntdll.lib
   comctl32.lib
   psapi.lib
 )

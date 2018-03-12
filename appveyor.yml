@@ -8,6 +8,7 @@ build_script:
   - cmd
   - '"C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvarsall.bat" x64_x86' #use cross build x86 to speed up
   - cmake -G "Visual Studio 15 2017"
+  - call msbuild /m /p:Configuration=Release %APPVEYOR_BUILD_FOLDER%\ /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"  
 
 
 test: off
